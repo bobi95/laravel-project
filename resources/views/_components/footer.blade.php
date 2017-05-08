@@ -7,9 +7,9 @@
       <div class="col l4 offset-l2 s12">
         <h5 class="white-text">Links</h5>
         <ul>
-          <li><a href="{{ route('home') }}" class="grey-text text-lighten-3">Home</a></li>
-          <li><a href="{{ route('about') }}" class="grey-text text-lighten-3">About</a></li>
-          <li><a href="{{ route('contact') }}" class="grey-text text-lighten-3">Contact Us</a></li>
+          <li><a href="{{ route('home.index') }}" class="grey-text text-lighten-3">Home</a></li>
+          <li><a href="{{ route('home.about') }}" class="grey-text text-lighten-3">About</a></li>
+          <li><a href="{{ route('home.contact') }}" class="grey-text text-lighten-3">Contact Us</a></li>
         </ul>
       </div>
     </div>

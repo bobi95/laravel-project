@@ -9,7 +9,8 @@
             <p><span class="grey-text text-darken-1 text-bold">Email: </span><span class="truncate">{{ $user->email }}</span></p>
         </div>
         <div class="col s12 center-align">
-            <form action="#" class="col s12" id="logout-form">
+            <form action="{{ route('auth.logout') }}" method="post" class="col s12" id="logout-form">
+                {{ csrf_field() }}
                 <div class="col s12 center-align">
                     <button class="btn waves-effect waves-light" type="submit" name="action">Logout<i class="material-icons right">lock_outline</i></button>
                 </div>

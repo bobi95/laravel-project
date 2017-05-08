@@ -18,18 +18,19 @@ class PageRequest implements IPageable
      * @param  Request $request Request
      * @return PageRequest      Resulting PageRequest
      */
-    public static function fromRequest(Request $request) {
+    public static function fromRequest(Request $request)
+    {
         Assert::notNull($request, '$request');
 
         $page = $request->get('page', 1);
-        $limit = $request->get('limit', 20);
+        $limit = $request->get('limit', 10);
 
         $sort = $request->get('sort', []);
         $sort = is_array($sort) ? $sort : [ $sort ];
 
         $sorts = [];
         foreach ($sort as $prop) {
-            $dir = strtoupper($request->get($pro . '.dir', 'ASC'));
+            $dir = strtoupper($request->get($prop . '.dir', 'ASC'));
             if ($dir !== 'ASC' && $dir !== 'DESC') {
                 $dir = 'ASC';
             }
@@ -39,25 +40,30 @@ class PageRequest implements IPageable
         return new PageRequest($page, $limit, $sorts);
     }
 
-    public function __construct($page, $limit, $sorts) {
+    public function __construct($page, $limit, $sorts)
+    {
         $this->page = $page > 0 ? $page : 1;
         $this->limit = $limit > 0 ? $limit : 0;
         $this->sorts = isset($sorts) ? $sorts : [];
     }
 
-    public function getPage() {
+    public function getPage()
+    {
         return $this->page;
     }
 
-    public function getLimit() {
+    public function getLimit()
+    {
         return $this->limit;
     }
 
-    public function getSkip() {
+    public function getSkip()
+    {
         return ($this->page - 1) * $this->limit;
     }
 
-    public function getSorts() {
+    public function getSorts()
+    {
         return $this->sorts;
     }
 }

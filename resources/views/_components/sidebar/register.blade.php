@@ -1,7 +1,8 @@
 <div class="col s12">
     <h3 class="center-align grey-text">Register</h3>
-    <form action="#" class="col s12" id="register-form">
+    <form action="{{ route('auth.register') }}" method="post" class="col s12" id="register-form">
         <div class="row">
+            {{ csrf_field() }}
             <div class="input-field col s12">
                 <input type="text" id="register_name" class="validate" name="name">
                 <label for="register_name">Name</label>
@@ -15,7 +16,7 @@
                 <label for="register_password">Password</label>
             </div>
             <div class="input-field col s12">
-                <input type="password" id="register_repeat-password" class="validate" name="repeat-password">
+                <input type="password" id="register_repeat-password" class="validate" name="password_confirmation">
                 <label for="register_repeat-password">Repeat Password</label>
             </div>
             <div class="col s12 center-align">

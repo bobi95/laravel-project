@@ -8,7 +8,7 @@ function isPage($path, $strict = false) {
 }
 
 function isRoute($name) {
-    return \Request::route()->getName() === $name;
+    return Request::route()->getName() === $name;
 }
 
 function getOrDefault($arg, $default) {

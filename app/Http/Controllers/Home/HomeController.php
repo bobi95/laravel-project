@@ -13,7 +13,8 @@ use \Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
-    private function getPage(Request $request) {
+    private function getPage(Request $request)
+    {
         // 10 items (0 to 9), 60 total items, page 0, 10 items per page
         $pageReq = PageRequest::fromRequest($request);
         $skip = $pageReq->getSkip();
@@ -24,15 +25,18 @@ class HomeController extends Controller
         return Page::fromPageable($data, 120, $pageReq);
     }
 
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         return view('home.index')->withPage($this->getPage($request));
     }
 
-    public function about() {
-        return view('home.index')->withPage($this->getPage());
+    public function about(Request $request)
+    {
+        return view('home.index')->withPage($this->getPage($request));
     }
 
-    public function contact() {
-        return view('home.index')->withPage($this->getPage());
+    public function contact(Request $request)
+    {
+        return view('home.index')->withPage($this->getPage($request));
     }
 }
