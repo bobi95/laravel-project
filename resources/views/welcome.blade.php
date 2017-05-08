@@ -24,9 +24,9 @@
                     <div class="col s12">
                         <a href="#" class="brand-logo">Sorry for late project</a>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="#">ABOUT</a></li>
-                            <li><a href="#">CONTACT ME</a></li>
+                            <li @if (isRoute('home')) class="active" @endif><a href="{{ route('home') }}">HOME</a></li>
+                            <li @if (isRoute('about')) class="active" @endif><a href="{{ route('about') }}">ABOUT</a></li>
+                            <li @if (isRoute('contact')) class="active" @endif><a href="{{ route('contact') }}">CONTACT ME</a></li>
                         </ul>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                                 <form action="#" class="col s12" id="logout-form">
                                     <div class="col s12 center-align">
                                         <button class="btn waves-effect waves-light" type="submit" name="action">Logout<i class="material-icons right">lock_outline</i></button>
-                                    </div> 
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -135,16 +135,16 @@
                         // getPageNumbers($currentPage, $maxPages, $maxShownNumbers)
                         // return [ 'startNum' => $i, 'endNum' => $max_i ]
                         $MAX_SHOWN = 9;
-                        $OFFSET = $MAX_SHOWN / 2;
+                        $OFFSET = floor($MAX_SHOWN / 2);
                         $MIDDLE = $OFFSET + 1;
 
                         $i = $page < $MIDDLE ? 1 :
-                             ($page > $max_pages - $OFFSET ? ($max_pages - 2 * $OFFSET) :
+                             (($page > $max_pages - $OFFSET) ? ($max_pages - 2 * $OFFSET) :
                              ($page - $OFFSET));
 
-                        $max_i = $max_pages <= $MAX_SHOWN || $page + $OFFSET > $max_pages ? $max_pages :
+                        $max_i = ($max_pages <= $MAX_SHOWN || $page + $OFFSET > $max_pages) ? $max_pages :
                                  ($page < $MIDDLE ? $MAX_SHOWN : $page + $OFFSET);
-                        
+
                     @endphp
                     <div class="center-align">
                         <ul class="pagination">
